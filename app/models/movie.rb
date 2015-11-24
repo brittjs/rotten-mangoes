@@ -14,13 +14,15 @@ class Movie < ActiveRecord::Base
   validates :description,
     presence: true
 
-  validates :poster_image_url,
+  validates :image,
     presence: true
 
   validates :release_date,
     presence: true
 
   validate :release_date_is_in_the_past
+
+  mount_uploader :image, ImageUploader
 
   def review_average
     return 0 if reviews.empty?
