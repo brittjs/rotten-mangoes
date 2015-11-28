@@ -28,6 +28,7 @@ GEM
     arel (4.0.2)
     bcrypt-ruby (3.0.1)
     builder (3.1.4)
+    byebug (8.2.1)
     carrierwave (0.10.0)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
@@ -67,6 +68,9 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    pry-byebug (3.3.0)
+      byebug (~> 8.0)
+      pry (~> 0.10)
     rack (1.5.5)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -129,7 +133,7 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   jquery-rails
   kaminari
-  pry
+  pry-byebug
   rails (= 4.0.0)
   sass-rails (~> 4.0.0)
   sdoc

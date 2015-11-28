@@ -39,7 +39,7 @@ gem 'carrierwave'
 
 gem 'kaminari'
 
-gem 'pry'
+gem 'pry-byebug'
 
 # Use unicorn as the app server
 # gem 'unicorn'
