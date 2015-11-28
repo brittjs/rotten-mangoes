@@ -5,6 +5,7 @@
 <%= form_tag movies_path, :method => 'get', id: "movies-search" do %>
   <%= text_field_tag :title, params[:title], placeholder: "Title" %>
   <%= text_field_tag :director, params[:director], placeholder: "Director" %>
+  <%= select_tag "duration", "<option>Under 90 minutes</option><option>Between 90 and 120 minutes</option><option>Over 120 minutes</option>".html_safe %> 
   <p><%= submit_tag "Search", name: nil %></p>
 <% end %>
 
