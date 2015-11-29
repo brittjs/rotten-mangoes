@@ -1,3 +1,5 @@
+<%= link_to "Back to all movies", movies_path %>
+
 <h1>All Users</h1>
 
 <%= paginate @users %>
@@ -8,20 +10,12 @@
     <th>Name</th>
     <th>Email</th>
   </tr>
-  <% for user in @users %>
+  <% @users.each do |user| %>
     <tr>
-      <td><%= user.id %></td>
-      <td><%= user.firstname + " " + user.lastname %></td>
-      <td><%= user.email %></td>
-      <td><%= link_to "Delete", admin_user_path %>
+    <td><%= user.id %></td>
+    <td><%= user.firstname + " " + user.lastname %></td>
+    <td><%= user.email %></td>
+    <td><%= link_to "Delete", admin_user_path(user), method: :delete, data: {confirm: "Are you sure you'd like to delete this user?"} %>
     </tr>
   <% end %>
 </table>
-
-
-
-<!-- # <% @users.each do |user| %>
-#   <h4>Name: <%= user.full_name %></h4>
-#   <h4>Email: <%= user.email %></h4>
-#   <hr>
-# <% end %> -->

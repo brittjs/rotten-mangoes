@@ -7,9 +7,10 @@ class Admin::UsersController < ApplicationController
     @users = User.all.page(params[:page]).per(5)
   end
 
-   def destroy
+  def destroy
     @user = User.find(params[:id])
     @user.destroy
+    redirect_to admin_users_path, notice: "#{@user.firstname + " " + @user.lastname} was deleted."
   end
 
 end
