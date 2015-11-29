@@ -29,24 +29,18 @@ class Movie < ActiveRecord::Base
     reviews.sum(:rating_out_of_ten)/reviews.size
   end
 
-  # scope :title_and_director, -> (movie_title, director_name) { where("title LIKE ? AND director LIKE ?", movie_title, director_name) }
-  # scope :by_title -> (movie_title) { where("title LIKE ?", movie_title) }
-  # scope :by_director -> (director_name) { where("director LIKE ?", director_name) }
+  # scope :search_term, -> (search_term) { where("title LIKE ? AND director LIKE ?", search_term) }
   # scope :under_90 -> { where("runtime_in_minutes < 90" }
   # scope :between_90_and_120 -> { where("runtime_in_minutes >= 90 AND runtime_in_minutes <= 120") }
   # scope :over_120 -> { where("runtime_in_minutes > 120") }
 
-  def self.search(title, director, duration)
-    if title.present? && director.present?
-      @movies = Movie.where("title LIKE ? AND director LIKE ?", "%#{title}%", "%#{director}%") 
-    elsif title.present?
-      @movies = Movie.where("title LIKE ?", "%#{title}%") 
-    elsif director.present?
-      @movies = Movie.where("director LIKE ?", "%#{director}%")
+  def self.search(keyword, duration)
+    if keyword.present?
+      @movies = Movie.where("title LIKE ? OR director LIKE ?", "%#{keyword}%", "%#{keyword}%") 
     end
     case duration
       when "Any duration"
-        unless title.present? || director.present? 
+        unless keyword.present? 
           @movies = Movie.all
         end  
       when "Under 90 minutes"
