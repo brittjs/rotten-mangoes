@@ -37,15 +37,17 @@ class Movie < ActiveRecord::Base
     elsif director.present?
       @movies = Movie.where("director LIKE ?", "%#{director}%")
     end
-    unless duration == "Any duration" 
-      case duration
+    case duration
+      when "Any duration"
+        unless title.present? || director.present? 
+          @movies = Movie.all
+        end  
       when "Under 90 minutes"
         @movies = Movie.where("runtime_in_minutes < 90")
       when "Between 90 and 120 minutes"
         @movies = Movie.where("runtime_in_minutes >= 90 AND runtime_in_minutes <= 120")
       when "Over 120 minutes"
         @movies = Movie.where("runtime_in_minutes > 120")
-      end
     end
     @movies
   end
