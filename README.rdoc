@@ -1,3 +1,5 @@
-Lighthouse Labs Web Development Assignment
+Rotten Mangoes
+
+A Lighthouse Labs Web Development Assignment
 
 This is a Rotten Tomatoes inspired movie database app that allows a user to post and view movie information, as well as leave comments and reviews. This app was built using Ruby on Rails.
